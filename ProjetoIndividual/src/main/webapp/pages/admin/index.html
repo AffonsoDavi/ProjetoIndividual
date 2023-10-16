@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Página administração</title>
+	<link rel="stylesheet" type="text/css" href="../../css/adm.css">
+</head>
+
+<body class="bgu">
+
+	<header>
+
+		<!-- img da logo -->
+		<div class="header-left">
+			<img src="../../imgs/logo.png" alt="Imagem de Destaque" id="imagemDestaque">
+		</div>
+	</header>
+
+	<!-- menu lateral -->
+	<nav>
+		<!-- img relatorios com a modal  -->
+		<div class="menu-images ">
+			<div class="menu-item" onclick="abrirModal('modalRelatorio')">
+				<img src="../../imgs/relatorio.png" alt="Imagem Relatório">
+				<p>Gerar Relatórios</p>
+			</div>
+
+			<!-- img usuarios com a modal  -->
+			<div class="menu-item" onclick="abrirModal('modalGerirUsuarios'); preencherModalUsuarios()">
+				<img src="../../imgs/usuarios.png" alt="Imagem Usuários">
+				<p>Gerir Usuários</p>
+			</div>
+
+			<!-- img Livros com a modal  -->
+			<div class="menu-item" onclick="abrirModal('modalGerirLivros'); preencherModalLivros()">
+				 <img src="../../imgs/livros.png" alt="Imagem Livros">
+				<p>Gerir Livros</p>
+			</div>
+		</div>
+	</nav>
+	<!-- FIM -->
+
+
+
+
+
+
+	<!--MODAL DA IMAGEM GERAR RELATORIO  -->
+	<div id="modalRelatorio" class="modal-geral">
+		<div class="modal-content">
+			<span class="close" onclick="fecharModal('modalRelatorio')">&times;</span>
+			<h2>Gerar Relatório</h2>
+
+			<div class="modal-inputs">
+				<div class="input-container">
+					<label for="dataInicio">Data de Início:</label> 
+					<input type="date" id="dataInicio" class="tamanhoInput" name="dataInicio">
+				</div>
+				<div class="input-container">
+					<label for="dataFinal">Data Final:</label> 
+					<input type="date" id="dataFinal" class="tamanhoInput" name="dataFinal">
+				</div>
+
+				<div class="input-container">
+					<label for="relatorioTipo">Tipo de Relatório:</label> 
+					<select id="relatorioTipo"
+						class="tamanhoInput" name="relatorioTipo">
+						<option value="selecione">Selecione</option>
+						<option value="usuarios">Relatório de Usuários</option>
+						<option value="livros">Relatório de Livros</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="modal-buttons">
+				<button type="button" onclick="gerarRelatorio()">Gerar</button>
+			</div>
+		</div>
+	</div>
+	<!-- FIM -->
+	<!-- ABRE MODAL DE RELATORIO DE USUARIOS -->
+	<div id="modalRelatorioUsuarios" class="modal-geral">
+		<div class="modal-geral-content modal-content">
+			<span class="close" onclick="fecharModal('modalRelatorioUsuarios')">&times;</span>
+			<h2>Relatório de Usuários</h2>
+			<div id="tabelaRelatorioUsuarios"></div>
+		</div>
+	</div>
+	<!-- ABRE MODAL DE RELATORIO DE LIVROS -->
+	<div id="modalRelatorioLivros" class="modal-geral">
+		<div class="modal-geral-content modal-content">
+			<span class="close" onclick="fecharModal('modalRelatorioLivros')">&times;</span>
+			<h2>Relatório de Livros</h2>
+			<div id="tabelaRelatorioLivros"></div>
+		</div>
+	</div>
+	<!-- FIM -->
+
+
+	<!-- MODAL DA IMAGEM GERIR USUARIOS -->
+	<div id="modalGerirUsuarios" class="modal-geral">
+		<div class="modal-geral-content modal-content">
+			<span class="close" onclick="fecharModal('modalGerirUsuarios')">&times;</span>
+			<h2>Gerenciamento de Usuários</h2>
+			<div>
+				<br>
+				<p>Quantidade de usuários: <span id="quantidadeUsuarios"></span></p>
+				<p>Usuários Ativos: <span id="usuariosAtivos"></span></p>
+				<p>Usuários Inativos: <span id="usuariosInativos"></span></p>
+			</div>
+			<br>
+			<h3>Informações dos Usuários:</h3>
+			<div id="tabelaGerirUsuarios"></div>
+		</div>
+	</div>
+	<!-- FIM -->
+
+
+	<!-- MODAL DA IMAGEM GERIR LIVROS -->
+	<div id="modalGerirLivros" class="modal-geral">
+		<div class="modal-geral-content modal-content">
+			<span class="close" onclick="fecharModal('modalGerirLivros')">&times;</span>
+			<h2>Gerenciamento de Livros</h2>
+			<div>
+				<br>
+				<p>Quantidade de Livros: <span id="quantidadeLivros"></span></p>
+				<p>livros Emprestados: <span id="livrosEmprestados"></span></p>
+				<p>Livros em estoque: <span id="livrosEmEstoque"></span></p>
+			</div>
+			<br>
+			<h3>Informações dos Usuários:</h3>
+			<div id="tabelaGerirLivros"></div>
+		</div>
+	</div>
+	<!-- FIM -->
+</body>
+<script src="../../js/admin.js"></script>
+
+</html>

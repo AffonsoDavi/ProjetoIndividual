@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.bgu {
+    background-image: url("../imgs/fundoSite.png");
+    height: calc(100vh - 100px); /* Subtrai a altura do cabeçalho (60px) */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d5a98563;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+.header-left img {
+    max-width: 80%;
+}
+
+.header-right input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: nonene;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+nav {
+    width: 120px;
+    height: 100%; /* Ajuste conforme necessário */
+    background-color: #d5a98563;
+    color: #fff;
+    padding: 7px;
+    position: sticky;
+}
+
+.menu-images img {
+    max-width: 100%;
+    margin-bottom: 10px; /* Adiciona espaçamento entre as imagens */
+}
+
+/* Adicione estilos para o texto abaixo das imagens */
+.menu-item {
+    text-align: ceNter; /* Centraliza o texto horizontalmente */
+    margin-top: 10px; /* Espaçamento entre a imagem e o texto */
+    cursor: pointer;
+    transition: transform 0.2s; /* Adiciona uma transição suave à transformação */
+}
+
+/* Estilos ao passar o mouse sobre .menu-item */
+.menu-item:hover {
+    transform: scale(1.03); /* Aumenta o tamanho em 3% em cada lado */
+}
+
+.menu-item p {
+    margin: 0; /* Remove margens */
+    font-size: 16px; /* Tamanho do texto */
+    color: black; /* Cor do texto */
+}
+
+/* Estilos para a modal de Gerar Relatório */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #e9d2c3;
+    margin: 7% auto 0;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 370px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 34px;
+    cursor: pointer;
+}
+
+.tamanhoInput {
+    width: 100%;
+    margin-right: 50px;
+}
+
+.modal-inputs {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input-container > label {
+    font-size: 18px;
+    width: 200px;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+    width: 120px;
+}
+
+.modal-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para a modal quando está aberta */
+.modal.active {
+    display: block;
+}
+
+
+/* Estilos para a nova modal de Relatório de Usuários */
+.modal-geral {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-geral-content {
+    background-color: #e9d2c3;
+    margin: 7% auto 0;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 80px 0 rgb(0 0 0 / 99%);
+    width: 55%; /* Largura da nova modal */
+    text-align: center;
+    position: relative;
+}
+
+.modal-geral .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 34px;
+    cursor: pointer;
+}
+
+/* Estilo para a tabela de relatório de usuários */
+.modal-geral table {
+    width: 100%;
+    border-collapse: colLapse;
+    margin-top: 20px;
+}
+
+.modal-geral th, .modal-geral td {
+    padding: 7px;
+    border: 1px solid #ddd;
+}
+
+.modal-geral th {
+    background-color: #b391749c;
+    color: black;
+}
+
+.modal-geral td {
+    background-color: #fdf0f0;
+}
+
+/* Estilo para a nova modal quando está aberta */
+.modal-geral.active {
+    display: block;
+}

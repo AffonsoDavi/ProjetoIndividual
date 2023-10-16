@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pagina usuários</title>
+<link rel="stylesheet" type="text/css" href="../../css/site.css">
+</head>
+
+<body class="bgu">
+
+	<header>
+		<!-- img da logo -->
+		<div class="header-left">
+			<img src="../../imgs/logo.png" alt="Imagem de Destaque"
+				id="imagemDestaque">
+		</div>
+
+	</header>
+	
+	
+	<!-- FILTRO LIVROS LATERAL -->
+	<div class="filtro-lateral">
+   		<div class="filtro-item" onmouseover="mostrarFiltro()">
+       	<h2>Filtrar Livros</h2>
+        	<div class="filtro-dropdown" id="filtroDropdown">
+            	<br>
+            	<label for="nomeLivro">Nome:</label>
+            	<input type="text" id="nomeLivro">
+            
+            	<label for="acao">Gênero:</label>
+				<div class="checkbox-label">
+    				<input type="checkbox" id="acao" name="acao" value="ação">
+   				 	<label for="acao">Ação</label>
+   				 </div>
+   				 <div class="checkbox-label">
+   				 	<input type="checkbox" id="romance" name="romance" value="romance">
+   				 	<label for="romance">Romance</label>
+   				 </div>
+   				 <div class="checkbox-label">
+   				 	<input type="checkbox" id="autoconhecimento" name="autoconhecimento" value="auto-conhecimento">
+   				 	<label for="autoconhecimento">Auto Conhecimento</label>
+   				 </div>
+				
+				
+        	    <button onclick="aplicarFiltro()">Aplicar</button>
+      	  </div>
+   	 </div>
+	</div>
+	<!-- FIM -->
+
+
+	<!-- menu lateral -->
+	<nav>
+		<!-- img relatorios com a modal  -->
+		<div class="menu-images ">
+
+			<!-- img Livros com a modal  -->
+			<div class="menu-item" onclick="abrirModal('modalEmprestimo')">
+				<img src="../../imgs/livros.png" alt="Imagem Livros">
+				<p>Realizar Empréstimo</p>
+			</div>
+
+			<!-- img Livros com a modal  -->
+			<div class="menu-item" onclick="abrirModal('modalDevolucao'); popularLivroSelect() ">
+				<img src="../../imgs/livros.png" alt="Imagem Livros">
+				<p>Realizar Devolução</p>
+			</div>
+
+			<div class="menu-item" onclick="abrirModal('modalInfos')">
+				<img src="../../imgs/relatorio.png" alt="Imagem Relatório">
+				<p>Visualizar informações</p>
+			</div>
+
+		</div>
+	</nav>
+	<!-- FIM -->
+	
+
+	<!-- TABELA COM OS LIVROS -->
+ 		<div class="tabelaLivros" id="tabela-container"></div>
+	<!-- FIM -->
+	
+	
+	<!-- INICIO DA MODAL DE EMPRESTIMOS -->
+	<div class="modal" id="modalEmprestimo">
+		<div class="modal-content">
+			<span class="close" onclick="fecharModal('modalEmprestimo')">&times;</span>
+			<h2>Empréstimos</h2>
+			<form id="formEmprestimo" onsubmit="">
+				<!-- EDITAR AQUI DEPOIS NO ONSUBMIT -->
+
+				<label for="nomeLivro">Nome do Livro:</label> 
+				<input type="text" id="nomeLivro" required><br> 
+				
+				<label for="dataEmprestimo">Data de Empréstimo:</label> 
+				<input type="text" id="dataEmprestimo" readonly><br>
+				
+				<label for="dataDevolucao">Data de Devolução:</label> 
+				<input type="date" id="dataDevolucao" required max="" min=""><br>
+
+				<div class="modal-buttons">
+					<button type="submit">Realizar Empréstimo</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<!-- FIM -->
+
+	<!-- MODAL DE DEVOLUÇÃO -->
+	<div class="modal" id="modalDevolucao">
+		<div class="modal-content">
+			<span class="close" onclick="fecharModal('modalDevolucao')">&times;</span>
+			<h2>Devolução de Livros</h2>
+
+			<form id="formDevolucao" onsubmit="return realizarDevolucao()">
+				
+				<label for="livroSelect">Escolha o Livro:</label> 
+					<select
+					id="livroSelect"required>
+					</select><br> 
+					
+					<label for="dataDevolucao">Data de Devolução:</label> 
+					<input type="date" id="dataDevolucao" readonly><br>
+
+				<div class="modal-buttons">
+					<button type="submit">Realizar Devolução</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- FIM -->
+	
+	
+	<!-- MODAL DE INFORMAÇÕES -->
+	<div class="modal" id="modalInfos">
+		<div class="modal-content" >
+			<span class="close" onclick="fecharModal('modalInfos')">&times;</span>
+			<h2>Consultar informações</h2>
+			<div id="formDevolucao">
+				<button type="button" onclick="abrirModal('modalPerfil'); infoPerfil()">Informações do perfil</button>
+				<button type="button" onclick="abrirModal('modalLivrosEmprestados'); livrosEmprestados()">Livros em empréstimo</button>
+				<button type="button" onclick="abrirModal('modalMultas')">Consultar Multas</button>
+			</div>
+		</div>
+	</div>
+	<!-- FIM -->
+	
+	<!-- MODAL DE PERFIL -->
+	<div id="modalPerfil" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modalPerfil')">×</span>
+            <h2>Perfil</h2>
+            <p>Nome de usuário: <span id="nomeUsuario"></span></p>
+            <p>Email: <span id="email"></span></p>
+            <p>Senha: <span id="senha"></span></p>
+            <p>Tipo de usuário: <span id="tipoUsuario"></span></p>
+        </div>
+    </div>
+    
+    
+    <!-- MODAL DE LIVROS EMPRESTADOS -->
+    <div id="modalLivrosEmprestados" class="modal-geral">
+        <div class="modal-geral-content modal-content">
+            <span class="close" onclick="fecharModal('modalLivrosEmprestados')">×</span>
+            <h2>Livros Emprestados</h2>
+            <div id="livrosTabela"></div>
+        </div>
+    </div>
+    
+    
+    <!-- MODAL DE MULTAS -->
+	<div id="modalMultas" class="modal">
+   		<div class="modal-content">
+		<span class="close" onclick="fecharModal('modalMultas')">×</span>
+		   <h2>n tem multas</h2>
+		</div>	
+	</div>
+ 	   
+
+<footer>@ProjetoIndividual</footer>
+</body>
+<script src="../../js/usuarios.js"></script>
+</html>
